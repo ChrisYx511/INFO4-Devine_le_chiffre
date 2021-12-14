@@ -1,7 +1,16 @@
 var tutorialPageNumber = 1
 var selectedDifficulty = ""
+var overallGameProgress = 0
 const menuClickSound = new Audio("./assets/sounds/sfx/click.wav")
 const lastSupriseMusic = new Audio("./assets/sounds/music/lastsuprise.mp3")
+const battleStartSound = new Audio("./assets/sounds/sfx/battlestart.wav")
+
+document.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        processEnterKey()
+        console.log("Enter detecte")
+    }
+})
 
 function initialTutorialNextPage() {
     const dialogueTitle = document.querySelector("#preGameStartDialogueCard h2")
@@ -25,7 +34,6 @@ function initialTutorialNextPage() {
             console.log(tutorialPageNumber)
             break;   
     }
-    
 }
 
 function battleStart(difficulty) {
@@ -43,20 +51,40 @@ function battleStart(difficulty) {
     }
     console.log("Selected Difficulty: " + selectedDifficulty)
     menuClickSound.play()
-
+    battleStartSound.play()
+    lastSupriseMusic.volume = 0.5
     lastSupriseMusic.play()
     lastSupriseMusic.loop = true
+
+    const gameContainerPreSkillSelect = document.querySelector("#gameContainerPreSkillSelect")
+    const gameContainerLoadingScreen = document.querySelector("#GameContainerLoadingScreen")
+    gameContainerLoadingScreen.style.display = "none"
+    gameContainerPreSkillSelect.style.display = "inherit"
+
+    overallGameProgress = 1
+
 }
+
+function processEnterKey() {
+    switch (overallGameProgress) {
+        case 0 :
+            initialTutorialNextPage()
+            break;
+        case 1 : 
+            skillSelect()
+            break;
+        case 2 :
+            openNumberGuess()
+            break;
+    }
+}
+
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }  
 
-function chooseDifficulty() {
-    let difficulty = 0
-    let chosenDifficulty = document.getElementById("difficulty").value
-    
-}
+
 
 const correctNumber = getRandomInt(1, 100)
 function validate() { 
