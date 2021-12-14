@@ -28,7 +28,7 @@ body {
 }
 #preSkillSelect img {
     animation-name: bobbing;
-    animation-duration: 4s;
+    animation-duration: 3s;
     animation-timing-function: ease-in-out ;
     animation-iteration-count: infinite;
 }
@@ -37,7 +37,22 @@ body {
     50% { transform: scale(1.075);}
     100% { transform: scale(1);}
 }
+.hpcount {
+    position: absolute;
+    color: rgb(101, 242, 221);
+    opacity: 80%;
+    /*transform: rotate(5deg);*/
+    font-size: 31px
+}
 
+#hpCountPreSkillSelect {
+    bottom: 36px;
+    right: 107px;
+}
+#hpCountSkillSelect {
+    bottom: 66px;
+    right: 137px;
+}
 #GameContainerLoadingScreen {
     background-image: url(./assets/tutorial-general.png);
     background-repeat: no-repeat;

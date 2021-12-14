@@ -1,10 +1,13 @@
 var tutorialPageNumber = 1
 var selectedDifficulty = ""
 var overallGameProgress = 0
+let healthpoints = 84
+
 const menuClickSound = new Audio("./assets/sounds/sfx/click.wav")
 const lastSupriseMusic = new Audio("./assets/sounds/music/lastsuprise.mp3")
 const battleStartSound = new Audio("./assets/sounds/sfx/battlestart.wav")
 const personaVoiceSound = new Audio("./assets/sounds/sfx/persona.wav")
+const menuCancelSound = new Audio("./assets/sounds/sfx/menucancel.wav")
 
 const allGameContainers = document.querySelector(".gameContainer")
 const gameContainerPreSkillSelect = document.querySelector("#gameContainerPreSkillSelect")
@@ -14,9 +17,13 @@ const gameContainerSkillSelect = document.querySelector("#gameContainerSkillSele
 document.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
         processEnterKey()
-        console.log("Enter detecte")
+        console.log("Enter detected")
+    } else if (event.key === "Escape") {
+        processEscKey()
+        console.log("Escape Detected")
     }
 })
+
 function processEnterKey() {
     switch (overallGameProgress) {
         case 0 :
@@ -30,6 +37,17 @@ function processEnterKey() {
             break;
     }
 }
+
+function processEscKey() {
+    switch (overallGameProgress) {
+        case 2 :
+            gameContainerSkillSelect.style.display = "none"
+            gameContainerPreSkillSelect.style.display = "inherit"
+            menuCancelSound.play()
+            overallGameProgress = 1
+    }
+}
+
 
 function initialTutorialNextPage() {
     const dialogueTitle = document.querySelector("#preGameStartDialogueCard h2")
@@ -56,6 +74,7 @@ function initialTutorialNextPage() {
 }
 
 function battleStart(difficulty) {
+    const healthpointsDiv = document.querySelector("#hpCountPreSkillSelect")
     console.log("This shit works " + difficulty)
     switch(difficulty) {
         case "Facile" :
@@ -69,6 +88,20 @@ function battleStart(difficulty) {
             break;
     }
     console.log("Selected Difficulty: " + selectedDifficulty)
+    switch (selectedDifficulty) {
+        case 0 :
+            healthpoints = 84
+            break;
+        case 1 :
+            healthpoints = 64
+            break;
+        case 2 :
+            healthpoints = 44
+            break;
+    }
+
+    healthpointsDiv.innerHTML = String(healthpoints)
+
     menuClickSound.play()
     battleStartSound.play()
     lastSupriseMusic.volume = 0.5
@@ -83,10 +116,12 @@ function battleStart(difficulty) {
 }
 
 function skillSelect() {
+    const healthpointsDiv = document.querySelector("#hpCountSkillSelect")
+    healthpointsDiv.innerHTML = String(healthpoints)
     personaVoiceSound.play()
     gameContainerPreSkillSelect.style.display = "none"
     gameContainerSkillSelect.style.display = "inherit"
-    
+    overallGameProgress = 2
 }
 
 
