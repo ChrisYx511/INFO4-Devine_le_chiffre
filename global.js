@@ -4,6 +4,12 @@ var overallGameProgress = 0
 const menuClickSound = new Audio("./assets/sounds/sfx/click.wav")
 const lastSupriseMusic = new Audio("./assets/sounds/music/lastsuprise.mp3")
 const battleStartSound = new Audio("./assets/sounds/sfx/battlestart.wav")
+const personaVoiceSound = new Audio("./assets/sounds/sfx/persona.wav")
+
+const allGameContainers = document.querySelector(".gameContainer")
+const gameContainerPreSkillSelect = document.querySelector("#gameContainerPreSkillSelect")
+const gameContainerLoadingScreen = document.querySelector("#GameContainerLoadingScreen")
+const gameContainerSkillSelect = document.querySelector("#gameContainerSkillSelect")
 
 document.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
@@ -11,6 +17,19 @@ document.addEventListener("keyup", (event) => {
         console.log("Enter detecte")
     }
 })
+function processEnterKey() {
+    switch (overallGameProgress) {
+        case 0 :
+            initialTutorialNextPage()
+            break;
+        case 1 : 
+            skillSelect()
+            break;
+        case 2 :
+            openNumberGuess()
+            break;
+    }
+}
 
 function initialTutorialNextPage() {
     const dialogueTitle = document.querySelector("#preGameStartDialogueCard h2")
@@ -56,8 +75,6 @@ function battleStart(difficulty) {
     lastSupriseMusic.play()
     lastSupriseMusic.loop = true
 
-    const gameContainerPreSkillSelect = document.querySelector("#gameContainerPreSkillSelect")
-    const gameContainerLoadingScreen = document.querySelector("#GameContainerLoadingScreen")
     gameContainerLoadingScreen.style.display = "none"
     gameContainerPreSkillSelect.style.display = "inherit"
 
@@ -65,18 +82,11 @@ function battleStart(difficulty) {
 
 }
 
-function processEnterKey() {
-    switch (overallGameProgress) {
-        case 0 :
-            initialTutorialNextPage()
-            break;
-        case 1 : 
-            skillSelect()
-            break;
-        case 2 :
-            openNumberGuess()
-            break;
-    }
+function skillSelect() {
+    personaVoiceSound.play()
+    gameContainerPreSkillSelect.style.display = "none"
+    gameContainerSkillSelect.style.display = "inherit"
+    
 }
 
 
