@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #vie {
+            width: 600px;
+            height: 30px;
+            background-color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id ="vie"></div>
+    <input type="button" value="Hit me" onclick="poof()">
+    <p id="message"></p>
+    <script>
+        var vies = 600
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }  
+        function poof() {
+            const vie = document.getElementById("vie")
+            const messageContent = document.getElementById("message").innerHTML
+            messageContent=""
+            let subtractedLife = getRandomInt(1,100)
+            vies -= subtractedLife
+            if (subtractedLife >= 85) {
+                messageContent="Critical Hit! -" + subtractedLife + " HP!"
+            } else {
+                messageContent="-" + subtractedLife + " HP!"
+            }
+            if (vies <= 0) {
+                messageContent="Gameover lmao get dunked on scrub"
+                vies = 0
+            }
+            vie.style.width = vies + "px"
+
+        }
+    </script>
+</body>
+</html>

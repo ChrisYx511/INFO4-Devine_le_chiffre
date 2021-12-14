@@ -1,0 +1,6 @@
+@font-face {
+    font-family: Persona5;
+    src: url('./fonts/p5hatty.woff') format('woff'),
+        url('./fonts/p5hatty.ttf') format('truetype');
+}
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');

@@ -1,0 +1,59 @@
+html {
+    font-family: Persona5, sans-serif;
+    font-size: xx-large;
+}
+body {
+    background-color: red;
+}
+.gameContainer {
+    width: 1280px;
+    height:  720px;
+    border: 5px black solid;
+    margin: auto;
+    position: relative;
+}
+#gameContainerPreSkillSelect {
+    background-image: url(./assets/battle-screen.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+#preSkillSelect {
+    position: absolute;
+    left: 158px;
+    top: 260px;
+    transform:scale(0.59) rotate(-7deg);
+}
+
+#GameContainerLoadingScreen {
+    background-image: url(./assets/tutorial-general.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#preGameStartDialogueCard {
+    position: relative;
+    width: 800px;
+    height: 200px;
+    top: 140px;
+    left: 250px;
+}
+#preGameStartDialogueCard h2 {
+    text-align: center;
+    margin-top: 100px;
+    transform: rotate(-2deg);
+    color: #484848;
+    font-size: xx-large;
+}
+
+#preGameStartDialogueCard p {
+    color: white;
+    position: absolute;
+    left: 50px;
+    top: 30px;
+}
+.difficultySelector {
+    display: none;
+    position: absolute;
+    right: 200px;
+}
