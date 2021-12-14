@@ -69,3 +69,11 @@ body {
     position: absolute;
     right: 200px;
 }
+
+/* Skill Selection */
+#gameContainerSkillSelect {
+    background-image: url(./assets/skillpick.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+}
