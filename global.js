@@ -85,7 +85,7 @@ function initialTutorialNextPage() {
     
     switch(tutorialPageNumber) {
         case 2:
-            dialogueContent.innerHTML = "Vous devez deviner des chiffres pour réduire la barre de vie de l'ennemi. Votre barre de vie se situera dans le coin en bas, à droite de du jeu. Cliquez pour continuer."
+            dialogueContent.innerHTML = " Votre barre de vie se situera dans le coin en bas. Noter que chaque fois tu performes une attaque, le nombre change. Selon le niveau, il y a une marge d'erreur. Une attaque est critique lorsqu'on trouve le nombre exact."
             console.log(tutorialPageNumber)
             break;
         case 3 :
@@ -143,6 +143,7 @@ function skillSelect() {
     const healthpointsDiv = document.querySelector("#hpCountSkillSelect")
     healthpointsDiv.innerHTML = String(healthpoints)
     menuSelectSound.play()
+    personaVoiceSound.volume = 0.75
     personaVoiceSound.play()
     gameContainerPreSkillSelect.style.display = "none"
     gameContainerSkillSelect.style.display = "inherit"
