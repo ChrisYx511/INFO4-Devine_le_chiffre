@@ -15,9 +15,9 @@
             <h2>Getting Started</h2>
             <p>Dans ce jeu, vous allez deviner un chiffre. Lorsque le jeu va commencer, utilisez la touche "Enter" ou la souris pour naviguer les menus. Appuyez sur Entrer pour continuer. </p>
             <form class="difficultySelector">
-                <input type="button" value="Facile" onclick="battleStart(this.value)"><br>
-                <input type="button" value="Moyen" onclick="battleStart(this.value)"><br>
-                <input type="button" value="Difficile" onclick="battleStart(this.value)"><br>
+                <input type="button" class="button" value="Facile" onclick="battleStart(this.value)"><br>
+                <input type="button" class="button" value="Moyen" onclick="battleStart(this.value)"><br>
+                <input type="button" class="button" value="Difficile" onclick="battleStart(this.value)"><br>
             </form>
         </div>
     </div>
@@ -26,12 +26,42 @@
         <div class="mainBattleHud" id="preSkillSelect">
             <img src="./assets/enter.png" alt="Battle Hud">
         </div>
+        <div class="hitMark">
+            <div class="hitMarkBlock">
+                <img src="./assets/block.png" alt="Block!">
+            </div>
+            <div class="hitMarkCritical">
+                <img src="./assets/critical.png" alt="Critical!">
+            </div>
+            <div class="hitMarkCriticalCutIn">
+                <img src="./assets/cutin.png" alt="Looking cool joker!">
+            </div>
+        </div>
         <div class="hpcount" id="hpCountPreSkillSelect"></div>            
     </div>
 
     <div class="gameContainer" id="gameContainerSkillSelect">
         <div class="hpcount" id="hpCountSkillSelect"></div>     
-               
+
+    </div>
+    <div class="gameContainer" id="gameContainerGuessNumber">
+        <h3>Devine un nombre entre 1 et 100</h3>
+        <div id="numberGuessField">
+            <input type="text" id="guessedNumberInput">
+            <input type="button" class="button" value="Valider" id="validateNumberButton" onclick="validate()">
+        </div>
+    </div>
+    <div class="gameContainer" id="gameContainerVictoryScreen">
+        <div class="restartGamePrompt">
+            <img src="./assets/enter.png" alt="Enter">
+            <h4>Rejouer!</h4>
+        </div>
+    </div>
+    <div class="gameContainer" id="gameContainerGameOverScreen">
+        <div class="restartGamePrompt">
+            <h3>Fin de partie.<br> Voulez-vous poursuivre le jeu?</h3>
+            <img src="./assets/enter.png" alt="Enter">
+            <h4>Rejouer!</h4>        
     </div>
     <script type="text/javascript" src="global.js"></script>
 </body>
