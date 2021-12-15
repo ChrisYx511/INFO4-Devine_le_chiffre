@@ -215,10 +215,17 @@ function returnToBattle() {
                 healthpointsDiv1.style.removeProperty("animation-name")
                 healthpointsDiv1.style.removeProperty("animation-duration")
                 healthpointsDiv1.style.removeProperty("animation-iteration-count")
-            }, 1000);
-            document.querySelector(".hitMarkBlock img").style.display = "inherit"
+            }, 1000)
+            const hitMarkBlock = document.querySelector(".hitMarkBlock img")
+            hitMarkBlock.style.display = "inherit"
+            hitMarkBlock.style.animationName = "shake"
+            hitMarkBlock.style.animationDuration = "1s"
+            hitMarkBlock.style.animationIterationCount = "1"
             setTimeout(function() {
-                document.querySelector(".hitMarkBlock img").style.display = "none"
+                hitMarkBlock.style.display = "none"
+                hitMarkBlock.style.removeProperty("animation-name")
+                hitMarkBlock.style.removeProperty("animation-duration")
+                hitMarkBlock.style.removeProperty("animation-iteration-count")  
             }, 1500);
             if (healthpoints == 0) {
                 overallGameProgress = 5
